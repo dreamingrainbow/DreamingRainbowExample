@@ -14,6 +14,11 @@ import StackSlider from './StackSlider';
 import TodoList from './ToDoList';
 import TicTacToe from './TicTacToe';
 import Michael from './Michael_5_23_2018.jpg';
+import Content01 from './content01.jpg';
+import Content02 from './content02.jpg';
+import Content03 from './content03.jpg';
+import Content04 from './content04.jpg';
+import Content05 from './content05.jpg';
 class App extends Component {
   constructor(props){
     super(props);
@@ -31,24 +36,41 @@ class App extends Component {
     };
   }
   
-  componentWillMount () { 
+  componentWillMount () {
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.webkitBackgroundSize = 'cover';
+    const changeBackground = () => {
+        const content = [Content01,Content02,Content03,Content04,Content05];
+        document.body.style.background = `url(${content[Math.floor(Math.random() * content.length)]}) no-repeat center center fixed`;
+    }
 
+    setInterval(changeBackground, 15000);
+    changeBackground();
+    document.title = 'Welcome to dreamingrainbow.com';
     const Slides = [
       {
-          title : <h3 className="text-primary">Welcome to DreamingRainbow.com</h3>,
-          subtitle : <h4 className="text-info">Hello, I'm Michael, aka dreamingrainbow<br/><small>I look forward developing with you.</small></h4>,
           body : 
-          <Row className="justify-content-center mt-3 no-gutters">
-              <Col size={2} md={2} className="align-self-center px-3">
-                  <img className="img-thumbnail" src={Michael} alt="Michael Dennis AKA dreamingrainbow"/>              
-              </Col>
-              <Col size={10} md={10} className="align-self-center px-3" >
-                  <h5 className="text-danger">Let us start with a conversation about your dream, plan or idea!</h5>
-                  <p className="text-justify text-primary">With in a few days we can start constructing your dream into reality. We take the time to listen and 
-                  really get the feel for what you want to achieve. We understand sometime what we want to achieve and how we get there
-                  are about what we know and learn along the way.</p>
-              </Col>
-          </Row>,
+          <Card className="my-auto">
+            <Row className="justify-content-center mt-3 no-gutters">
+                <Col size={2} md={2} className="align-self-center px-3">
+                    <img className="img-thumbnail mb-3" src={Michael} alt="Michael Dennis AKA dreamingrainbow"/> 
+                    Michael A. Dennis <br/> Software Engineer             
+                </Col>
+                <Col size={10} md={10} className="align-self-center px-3" >
+
+                    <h3 className="text-primary mb-0">Welcome to DreamingRainbow.com</h3>
+                    <h4 className="text-info mb-0">Hello, I'm Michael Dennis, aka dreamingrainbow</h4>
+                    <h5 className="text-danger mt-1 text-left">Let us start with a conversation about your dream, plan or idea today!</h5>
+                    <p className="text-justify text-primary">With in a few moments we can start constructing your dream into reality.
+                    We take the time to listen and really get the feel for what you want to achieve. We understand sometimes what we want to achieve and how we get there
+                    are all about what we know and learn along the way. Click Next to see more or email me now. </p>
+                    <a href="tel:14804338495"><i className="fa fa-phone"></i> 1 (480) 433 - 8495</a>  
+                    &nbsp;&nbsp;<small> <i className="fa fa-star"></i> </small>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/michael-dennis-89b80752" alt="Linked In Profile"><i className="fa fa-linkedin"></i> michael-dennis-89b80752</a>  
+                    &nbsp;&nbsp;<small> <i className="fa fa-star"></i> </small>&nbsp;&nbsp;<a href="mailto:michaeladennis@yahoo.com"><i className="fa fa-envelope-o"></i> Michael A Dennis</a>
+
+                </Col>
+            </Row>
+        </Card>,
       },
       {
           title : <h3 className="text-primary">Turning Dreams to Applications</h3>,
@@ -73,11 +95,11 @@ class App extends Component {
                   </ListGroup>
               </Col>    
               <Col size={8} md={8}>
-                  <Card>
+                  <Card color="white" inverse>
                       <CardBody className="text-justify text-primary">
                           From my more recent experences in the MERN and AMERN stacks, I can provide excellent applications designed around your needs.
-                          When data is a concern, and the interactions between the front end and the back end matter. When user interaction, and design matter,
-                          I can step in and take any standard html theme and turn it to a react application using the MERN/AMERN stacks.
+                          When data is a concern, and the interactions between the front end and the back end matter, let me help. When user interaction, and design matters,
+                          I can step in and take any wireframe theme and turn it to a react application using the many tools in my toolbelt.
                       </CardBody>
                   </Card>
               </Col>    
@@ -163,19 +185,43 @@ class App extends Component {
           </Row>,        
       },
       {
+        title : <h3 className="text-primary">Explore. Learn. Create!</h3>,
+        subtitle : <h4 className="text-info">Here are a few of my favorite little projects.</h4>,          
+        body: <Row >
+                <Col >
+                    <h5 className="text-danger">Each of these are public repositories your welcome to check out.</h5>
+                    <ListGroup>
+                        <ListGroupItem>
+                            <a href="https://github.com/dreamingrainbow/Node-Express-Lessons">https://github.com/dreamingrainbow/Node-Express-Lessons</a>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <a href="https://github.com/dreamingrainbow/todo-list-lessons">https://github.com/dreamingrainbow/todo-list-lessons</a>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <a href="https://github.com/dreamingrainbow/blockchain-lessons">https://github.com/dreamingrainbow/blockchain-lessons</a>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <a href="https://github.com/dreamingrainbow/WhatIsGit">https://github.com/dreamingrainbow/WhatIsGit</a>
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <a href="https://github.com/dreamingrainbow/Delta5">https://github.com/dreamingrainbow/Delta5</a>
+                        </ListGroupItem>
+                    </ListGroup>
+                </Col>
+            </Row>
+      },
+      {
           title : <h3 className="text-primary">State driven design.</h3>,
           subtitle : <h4 className="text-info">Using tools like React, create feature rich, state driven web applications.</h4>,          
           body: <TodoList />
       },
       {
           title : <h3 className="text-primary">Thanks for taking a look at my online portfolio.</h3>,
-          subtitle : <h4 className="text-info">michaeladennis@yahoo.com | (480) 433 - 8495</h4>,
+          subtitle : <h4 className="text-info">michaeladennis@yahoo.com | (480) 433 - 8495 | <a href="https://discord.gg/vFeZuYj">BlockChange</a></h4>,
           body : <div>
-            <ul className="list-unstyled">  
-              <li><a href="http://dreamingrainbow.com" >dreamingrainbow.com</a></li>
-              <li><a href="https://github.com/dreamingrainbow">github.com/dreamingrainbow</a></li>
-              <li><a href="https://bitbucket.org/dre_mingrainbow">bitbucket.org/dre_mingrainbow</a></li>
-            </ul>
+            <a href="http://dreamingrainbow.com" >dreamingrainbow.com</a> | 
+            &nbsp;<a href="https://github.com/dreamingrainbow">github.com/dreamingrainbow</a> |
+            &nbsp;<a href="https://bitbucket.org/dre_mingrainbow">bitbucket.org/dre_mingrainbow</a>            
             <h4>I look forward to hearing from you soon!</h4>
             <TicTacToe />
           </div>          
@@ -215,15 +261,15 @@ class App extends Component {
       return (
         <div className={`App  ${this.state.slideIndex.main === 1 ? 'my-1 pt-1' : 'my-5 pt-3'}`} >
           <Container fluid className="slide">
-            <Container className="slide-container">
-              <Row >
+            <Container className={`slide-container justify-content-center align-self-center rounded ${this.state.slideIndex.main === 0 ? 'my-5 py-5' : ''}`} style={{backgroundColor:'#efefefef'}}>
+              <Row className={`${this.state.slideIndex.main === 0 ? '' : 'mt-5 pt-3'}`}>
                 <Col >
                   {this.state.slides.main[this.state.slideIndex.main].title}
                   {this.state.slides.main[this.state.slideIndex.main].subtitle}
                 </Col>
               </Row>
               {this.state.slides.main[this.state.slideIndex.main].body}
-              <Row >
+              <Row>
                 <Col className="my-3">
                   <span className="float-left">{this.state.slideIndex.main >= 1 ? <Button onClick={this.flipSlideBack.bind(this, 'main')}>Prev</Button> : null}</span>
                   <span className="float-right">{this.state.slideIndex.main < this.state.slides.main.length - 1 ? <Button onClick={this.flipSlide.bind(this, 'main')}>Next</Button> : null}</span>

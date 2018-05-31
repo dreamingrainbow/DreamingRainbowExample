@@ -141,7 +141,7 @@ export default class TicTacToe extends Component {
                     <Col>
                         <h2  className="text-primary"> TicTacToe </h2>
                         {this.state.winner ? <h3>Game Over!</h3> : null}
-                        X : {this.state.score[0]}  |  O : {this.state.score[1]}
+                        X : {this.state.score[0]}  |  O : {this.state.score[1]}<br/>
                         <Row className="no-gutters justify-content-center">
                             <span onClick={this.togglePiece.bind(this, 0 , 0)}>
                                 <img src="//placehold.it/72X72?text=?" alt="TicTacToe Options" ref="img_0_0"/>
@@ -175,6 +175,7 @@ export default class TicTacToe extends Component {
                                 <img src="//placehold.it/72X72?text=?" alt="TicTacToe Options" ref="img_2_2"/>
                             </span>
                         </Row>
+                        <br/>
                         <button onClick={this.resetScore.bind(this)}>Reset Score</button>
                         <button onClick={this.resetBoard.bind(this)}>Reset Board</button>
                         <button onClick={this.resetGame.bind(this)}>Reset Game</button>

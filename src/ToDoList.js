@@ -27,8 +27,10 @@ export default class ToDoList extends Component {
     }
 
     removeItem(index) {
-        const todoList = this.state.todoList;
-        this.setState({ todoList: todoList.filter((todo,i) => index !== i )});
+        let todoList = this.state.todoList;
+        todoList = todoList.filter((todo,i) => index !== i );
+        localStorage.setItem('ToDoList', JSON.stringify(todoList));
+        this.setState({ todoList });
     }
 
     render() {
